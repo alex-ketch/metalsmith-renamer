@@ -1,15 +1,15 @@
-# metalsmith-rename
+# metalsmith-renamer
 
 This is a plugin for [Metalsmith](http://www.metalsmith.io) that renames files matching a given `pattern`
 
 ##  Usage
 
-If using the CLI for Metalsmith, metalsmith-rename can be used like any other plugin by including it in `metalsmith.json`.  For example:
+If using the CLI for Metalsmith, metalsmith-renamer can be used like any other plugin by including it in `metalsmith.json`.  For example:
 
 ```json
 {
   "plugins": {
-    "metalsmith-rename": {
+    "metalsmith-renamer": {
       "pattern": "folder/*.md",
       "rename": "folder/newName.md"
     }
@@ -17,12 +17,12 @@ If using the CLI for Metalsmith, metalsmith-rename can be used like any other pl
 }
 ```
 
-For Metalscript's JavaScript API, metalsmith-rename can be used like any other plugin, by attaching it to the function invocation chain on the Metalscript object.  For example:
+For Metalscript's JavaScript API, metalsmith-renamer can be used like any other plugin, by attaching it to the function invocation chain on the Metalscript object.  For example:
 
 ```js
-var rename = require('metalsmith-rename');
+var renamer = require('metalsmith-renamer');
 require('metalsmith')(__dirname)
-  .use(copy({
+  .use(renamer({
     pattern: 'folder/*.md',
     rename: 'folder/newName.md'
     }
@@ -32,7 +32,7 @@ require('metalsmith')(__dirname)
 
 ## Options
 
-metalsmith-rename has two options, both of which must be defined:
+metalsmith-renamer has two options, both of which must be defined:
 - `pattern` option which uses [minimatch](https://github.com/isaacs/minimatch) to filter files.
 - `rename` which takes a string argument for what you'd like the files to be named.
 

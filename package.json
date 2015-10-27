@@ -1,11 +1,11 @@
 {
-  "name": "metalsmith-rename",
+  "name": "metalsmith-renamer",
   "version": "0.1.0",
   "description": "Plugin to take a pattern and rename each matched file",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git@github.com:alex-ketch/metalsmith-rename.git"
+    "url": "git@github.com:alex-ketch/metalsmith-renamer.git"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
