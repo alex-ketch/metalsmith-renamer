@@ -16,7 +16,7 @@
     "file"
   ],
   "author": "Alex Ketch",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "minimatch": "^3.0.0"
   }
