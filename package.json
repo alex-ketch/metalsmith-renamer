@@ -17,7 +17,7 @@
   ],
   "author": "Alex Ketch",
   "license": "MIT",
-  "devDependencies": {
+  "dependencies": {
     "minimatch": "^3.0.0"
   }
 }
