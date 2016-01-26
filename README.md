@@ -7,23 +7,6 @@ Presently it only accepts files, not folders, but folder renaming is planned for
 
 If using the CLI for Metalsmith, metalsmith-renamer can be used like any other plugin by including it in `metalsmith.json`. For example:
 
-```json
-{
-  "plugins": {
-    "metalsmith-renamer": {
-      "filesToRename": {
-        "pattern": "folder/**/*.md",
-        "rename": "newName.md"
-      },
-      "moreFiles": {
-        "pattern": "folder/about.html",
-        "rename": "index.html"
-      }
-    }
-  }
-}
-```
-
 For Metalscript's JavaScript API, metalsmith-renamer can be used like any other plugin, by attaching it to the function invocation chain on the Metalscript object.  For example:
 
 ```js
