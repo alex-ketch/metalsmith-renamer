@@ -15,7 +15,9 @@ require('metalsmith')(__dirname)
   .use(renamer({
     filesToRename: {
       pattern: 'folder/**/*.md',
-      rename: 'newName.md'
+      rename: function(name) {
+        return 'renamed' + name;
+      }
     },
     moreFiles: {
       pattern: 'folder/about.html',
@@ -30,7 +32,7 @@ require('metalsmith')(__dirname)
 
 metalsmith-renamer has two options, both of which must be defined:
 - `pattern` option which uses [minimatch](https://github.com/isaacs/minimatch) to filter files.
-- `rename` which takes a string argument for what you'd like the files to be named.
+- `rename` which takes a string argument for what you'd like the files to be named, or a function that takes a matched file name and returns the new one to be used.
 
 ## Use cases
 - I use it to simulate [metalsmith-permalinks](https://github.com/segmentio/metalsmith-permalinks) partially by renaming certain files `index.html`, allowing me to link straight to directories and not have to use the filename. metalsmith-permalink insists on enclosing files within a structured folder system, whereas I have folder already organized manually.
