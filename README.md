@@ -43,5 +43,5 @@ metalsmith-renamer has two options, both of which must be defined:
 ## Roadmap
 - [x] v0.1 Core renaming functionality
 - [x] v0.2 Allow specifying multiple inputs, avoiding the need to call the plugin multiple times.
-- [ ] v0.3 Allow renaming of directories.
-- [ ] v0.4 Clean up declaration method to take named objects, or a single unnamed one.
+- [ ] v0.4 Allow renaming of directories.
+- [ ] v0.5 Clean up declaration method to take named objects, or a single unnamed one.
