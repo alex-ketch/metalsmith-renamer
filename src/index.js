@@ -1,27 +1,27 @@
-'use strict';
-var minimatch = require('minimatch'),
-    path      = require('path');
+"use strict";
+import { Minimatch } from "minimatch";
+import { dirname, basename } from "path";
 
-module.exports = plugin;
+export default function plugin(options) {
+  return function (files, _, done) {
+    Object.keys(options).forEach(function (opt) {
+      var matcher = Minimatch(options[opt].pattern);
 
-function plugin(options) {
-  return function(files, metalsmith, done) {
-    Object.keys(options).forEach(function(opt) {
-      var matcher = minimatch.Minimatch(options[opt].pattern);
-
-      Object.keys(files).forEach(function(file) {
+      Object.keys(files).forEach(function (file) {
         if (!matcher.match(file)) {
           return;
         }
 
         var rename = options[opt].rename;
-        var renamedEntry = path.dirname(file) + '/';
+        var renamedEntry = dirname(file);
 
-        if (renamedEntry === './') {
-          renamedEntry = '';
+        // If file is at root of the `source` directory, strip the relative file path
+        if (renamedEntry === ".") {
+          renamedEntry = "";
         }
-        if (typeof rename === 'function') {
-          renamedEntry += rename(path.basename(file));
+
+        if (typeof rename === "function") {
+          renamedEntry += rename(basename(file));
         } else {
           renamedEntry += rename;
         }
@@ -32,6 +32,7 @@ function plugin(options) {
         }
       });
     });
+
     done();
   };
 }
