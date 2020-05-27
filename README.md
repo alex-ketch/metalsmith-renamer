@@ -3,6 +3,17 @@
 This is a plugin for [Metalsmith](http://www.metalsmith.io) that renames files matching a given `pattern`.
 Presently it only accepts files, not folders, but folder renaming is planned for the near future.
 
+## ❄️ Project Status
+
+This project is on somewhat of an auto-pilot which means:
+
+- As I don't use Metalsmith any more, I'm not familiar enough with it to provide support with issues.
+- I will accept fixes and feature PRs only if:
+  - they come with tests and relevant documentation.
+  - Releases will happen automatically once merged, so you must use [Semantic Release style commit
+    messages](https://semantic-release.gitbook.io/semantic-release/#commit-message-format).
+
+
 ##  Usage
 
 If using the CLI for Metalsmith, metalsmith-renamer can be used like any other plugin by including it in `metalsmith.json`. For example:
@@ -13,7 +24,7 @@ For Metalscript's JavaScript API, metalsmith-renamer can be used like any other 
 var renamer = require('metalsmith-renamer');
 require('metalsmith')(__dirname)
   .use(renamer({
-    filesToRename: {
+    filesToRename: { // this name is only used to help organize different settings
       pattern: 'folder/**/*.md',
       rename: function(name) {
         return 'renamed' + name;
@@ -22,7 +33,7 @@ require('metalsmith')(__dirname)
     moreFiles: {
       pattern: 'folder/about.html',
       rename: 'index.html'
-    }, //and as many more patterns as you want
+    }, // and as many more patterns as you want
   }
 })
 .build();
@@ -30,18 +41,12 @@ require('metalsmith')(__dirname)
 
 ## Options
 
-metalsmith-renamer has two options, both of which must be defined:
-- `pattern` option which uses [minimatch](https://github.com/isaacs/minimatch) to filter files.
-- `rename` which takes a string argument for what you'd like the files to be named, or a function that takes a matched file name and returns the new one to be used.
+`metalsmith-renamer` has two options, both of which must be defined:
+
+- `pattern`: option which uses [minimatch](https://github.com/isaacs/minimatch) to find files to rename.
+- `rename`: which takes a `string` argument for what you'd like the files to be named, or a `function` that takes a matched
+  file name and returns the new one to be used.
 
 ## Use cases
 - I use it to simulate [metalsmith-permalinks](https://github.com/segmentio/metalsmith-permalinks) partially by renaming certain files `index.html`, allowing me to link straight to directories and not have to use the filename. metalsmith-permalink insists on enclosing files within a structured folder system, whereas I have folder already organized manually.
-<!-- - Use it to rename folder names for preprocessor stylesheets, allowing you to keep a Stylus/SCSS/Less folder in your `src` folder, and then rename it to `css` in production build. -->
 
-
-
-## Roadmap
-- [x] v0.1 Core renaming functionality
-- [x] v0.2 Allow specifying multiple inputs, avoiding the need to call the plugin multiple times.
-- [ ] v0.4 Allow renaming of directories.
-- [ ] v0.5 Clean up declaration method to take named objects, or a single unnamed one.
