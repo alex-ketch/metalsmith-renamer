@@ -1,5 +1,7 @@
 # metalsmith-renamer
 
+![Release](https://github.com/alex-ketch/metalsmith-renamer/workflows/Release/badge.svg)
+
 This is a plugin for [Metalsmith](http://www.metalsmith.io) that renames files matching a given `pattern`.
 Presently it only accepts files, not folders, but folder renaming is planned for the near future.
 
@@ -13,6 +15,9 @@ This project is on somewhat of an auto-pilot which means:
   - Releases will happen automatically once merged, so you must use [Semantic Release style commit
     messages](https://semantic-release.gitbook.io/semantic-release/#commit-message-format).
 
+Thanks for your understanding!
+
+---
 
 ##  Usage
 
