@@ -1,4 +1,4 @@
-import renamer from "../src";
+import { renamer } from "../src";
 import Metalsmith from "metalsmith";
 
 const test = (opts = {}) =>

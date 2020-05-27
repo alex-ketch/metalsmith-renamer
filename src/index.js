@@ -2,32 +2,32 @@
 import { Minimatch } from "minimatch";
 import { dirname, basename } from "path";
 
-export default function plugin(options) {
-  return function (files, _, done) {
-    Object.keys(options).forEach(function (opt) {
-      var matcher = Minimatch(options[opt].pattern);
+export const renamer = (options) => {
+  return (files, _, done) => {
+    Object.keys(options).map((opt) => {
+      const matcher = Minimatch(options[opt].pattern);
 
-      Object.keys(files).forEach(function (file) {
+      Object.keys(files).map((file) => {
         if (!matcher.match(file)) {
           return;
         }
 
-        var rename = options[opt].rename;
-        var renamedEntry = dirname(file);
+        const nameTransformer = options[opt].rename;
+        let newFilename = dirname(file);
 
         // If file is at root of the `source` directory, strip the relative file path
-        if (renamedEntry === ".") {
-          renamedEntry = "";
+        if (newFilename === ".") {
+          newFilename = "";
         }
 
-        if (typeof rename === "function") {
-          renamedEntry += rename(basename(file));
+        if (typeof nameTransformer === "function") {
+          newFilename += nameTransformer(basename(file));
         } else {
-          renamedEntry += rename;
+          newFilename += nameTransformer;
         }
 
-        if (renamedEntry !== file) {
-          files[renamedEntry] = files[file];
+        if (newFilename !== file) {
+          files[newFilename] = files[file];
           delete files[file];
         }
       });
@@ -36,3 +36,5 @@ export default function plugin(options) {
     done();
   };
 }
+
+export default renamer
