@@ -6,8 +6,8 @@ on:
       - next
 
 jobs:
-  test:
-    name: Test
+  main:
+    name: Test & Release
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
