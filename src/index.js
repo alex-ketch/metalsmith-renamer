@@ -1,6 +1,7 @@
 "use strict";
 import { Minimatch } from "minimatch";
 import { dirname, basename } from "path";
+import { join } from "path";
 
 export const renamer = (options) => {
   return (files, _, done) => {
@@ -21,9 +22,9 @@ export const renamer = (options) => {
         }
 
         if (typeof nameTransformer === "function") {
-          newFilename += nameTransformer(basename(file));
+          newFilename = join(newFilename, nameTransformer(basename(file)));
         } else {
-          newFilename += nameTransformer;
+          newFilename = join(newFilename, nameTransformer);
         }
 
         if (newFilename !== file) {
@@ -35,6 +36,6 @@ export const renamer = (options) => {
 
     done();
   };
-}
+};
 
-export default renamer
+export default renamer;
