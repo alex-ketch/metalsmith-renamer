@@ -3,7 +3,7 @@ import { Minimatch } from "minimatch";
 import { dirname, basename } from "path";
 import { join } from "path";
 
-export const renamer = (options) => {
+const renamer = (options) => {
   return (files, _, done) => {
     Object.keys(options).map((opt) => {
       const matcher = Minimatch(options[opt].pattern);
