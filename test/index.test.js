@@ -1,4 +1,4 @@
-import { renamer } from "../src";
+import renamer from "../src";
 import Metalsmith from "metalsmith";
 
 const test = (opts = {}) =>
@@ -18,7 +18,7 @@ describe("metalsmith-renamer", () => {
   it("does note rename un-matched files", async () => {
     const files = await test({
       "Markdown Files": {
-        pattern: "*.md",
+        pattern: "**/*.md",
         rename: "home.html",
       },
     });
@@ -29,7 +29,7 @@ describe("metalsmith-renamer", () => {
   it("renames matched files using a string", async () => {
     const files = await test({
       "Markdown Files": {
-        pattern: "*.md",
+        pattern: "**/*.md",
         rename: "home.html",
       },
     });
@@ -37,21 +37,36 @@ describe("metalsmith-renamer", () => {
     expect(files).toHaveProperty(["home.html"]);
   });
 
-  it("only keeps one file when matching multiple files", async () => {
+  it("renames matched files using a string - nested file", async () => {
     const files = await test({
       "Markdown Files": {
-        pattern: "*.md",
-        rename: "home.html",
+        pattern: "**/*.md",
+        rename: "some/new/path/home.html",
       },
     });
 
-    expect(Object.keys(files)).toHaveLength(2);
+    expect(files).toHaveProperty(["nested/folder/some/new/path/home.html"]);
+  });
+
+  it("only keeps one file when matching multiple files", async () => {
+    const newName = "home.html";
+
+    const files = await test({
+      "Markdown Files": {
+        pattern: "*.md",
+        rename: newName,
+      },
+    });
+
+    expect(Object.keys(files).filter((file) => file === newName)).toHaveLength(
+      1
+    );
   });
 
   it("renames matched files using a function", async () => {
     const files = await test({
       "Markdown Files": {
-        pattern: "*.md",
+        pattern: "**/*.md",
         rename: (file) => `/new/directory/${file}`,
       },
     });
@@ -63,7 +78,7 @@ describe("metalsmith-renamer", () => {
     // https://github.com/alex-ketch/metalsmith-renamer/issues/4
     const files = await test({
       "Markdown Files": {
-        pattern: "*.md",
+        pattern: "**/*.md",
         rename: "index.md",
       },
     });
@@ -74,11 +89,11 @@ describe("metalsmith-renamer", () => {
   it("accepts multiple configuration options", async () => {
     const files = await test({
       "Markdown Files": {
-        pattern: "*.md",
+        pattern: "**/*.md",
         rename: "index.md",
       },
       "HTML files": {
-        pattern: "*.html",
+        pattern: "**/*.html",
         rename: "pageRenamed.html",
       },
     });

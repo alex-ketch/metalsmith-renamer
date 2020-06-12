@@ -1,6 +1,6 @@
 {
   "name": "metalsmith-renamer",
-  "version": "0.5.0",
+  "version": "0.5.1-next.1",
   "description": "Plugin to take a pattern and rename each matched file",
   "source": "src/index.js",
   "main": "dist/index.js",
@@ -52,6 +52,18 @@
     ],
     "plugins": [
       "@semantic-release/commit-analyzer",
+      [
+        "@semantic-release/commit-analyzer",
+        {
+          "preset": "angular",
+          "releaseRules": [
+            {
+              "type": "chore",
+              "release": "patch"
+            }
+          ]
+        }
+      ],
       "@semantic-release/release-notes-generator",
       "@semantic-release/changelog",
       "@semantic-release/npm",
