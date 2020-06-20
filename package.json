@@ -38,7 +38,7 @@
     "eslint-plugin-prettier": "3.1.4",
     "jest": "26.0.1",
     "metalsmith": "2.3.0",
-    "microbundle": "0.12.1",
+    "microbundle": "0.12.2",
     "prettier": "2.0.5",
     "semantic-release": "17.0.8"
   },
