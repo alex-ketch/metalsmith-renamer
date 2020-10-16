@@ -1,6 +1,6 @@
 {
   "name": "metalsmith-renamer",
-  "version": "0.5.35",
+  "version": "0.5.36",
   "description": "Plugin to take a pattern and rename each matched file",
   "source": "src/index.js",
   "main": "dist/index.js",
