@@ -1,3 +1,5 @@
+## [0.5.114](https://github.com/alex-ketch/metalsmith-renamer/compare/v0.5.113...v0.5.114) (2021-06-28)
+
 ## [0.5.113](https://github.com/alex-ketch/metalsmith-renamer/compare/v0.5.112...v0.5.113) (2021-06-26)
 
 ## [0.5.112](https://github.com/alex-ketch/metalsmith-renamer/compare/v0.5.111...v0.5.112) (2021-06-22)
