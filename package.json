@@ -39,7 +39,7 @@
     "jest": "27.5.1",
     "metalsmith": "2.4.2",
     "microbundle": "0.14.2",
-    "prettier": "2.6.0",
+    "prettier": "2.6.1",
     "semantic-release": "19.0.2"
   },
   "release": {
