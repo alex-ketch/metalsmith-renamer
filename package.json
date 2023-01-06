@@ -40,7 +40,7 @@
     "metalsmith": "2.5.1",
     "microbundle": "0.15.1",
     "prettier": "2.8.1",
-    "semantic-release": "19.0.5"
+    "semantic-release": "20.0.0"
   },
   "release": {
     "branches": [
